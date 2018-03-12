@@ -1,21 +1,22 @@
-package baseballSim
+package stattleship
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 )
 
-// StattleshipAPI interfaces with the API
-type StattleshipAPI struct {
+// API interfaces with the API
+type API struct {
 	APIToken string
 	Sport    string
 	League   string
 }
 
-// StattleshipJSONData stores Stattleship API calls
-type StattleshipJSONData struct {
+// JSONData stores Stattleship API calls
+type JSONData struct {
 	Games        []Game     `json:"games"`
 	HomeTeams    []Team     `json:"home_teams"`
 	AwayTeams    []Team     `json:"away_teams"`
@@ -29,8 +30,8 @@ type StattleshipJSONData struct {
 }
 
 // APIInit initialize the API with your token
-func APIInit(token string, sport string, league string) *StattleshipAPI {
-	rv := new(StattleshipAPI)
+func APIInit(token string, sport string, league string) *API {
+	rv := new(API)
 	rv.APIToken = token
 	rv.Sport = sport
 	rv.League = league
@@ -38,8 +39,9 @@ func APIInit(token string, sport string, league string) *StattleshipAPI {
 }
 
 // APICall makes an API call and stores the info in a struct
-func (s *StattleshipAPI) APICall() (*StattleshipJSONData, error) {
-	req, err := http.NewRequest("GET", "https://api.stattleship.com/baseball/mlb/seasons", nil)
+func (s *API) APICall(value string) (*JSONData, error) {
+	apiEndpoint := fmt.Sprintf("https://api.stattleship.com/%v/%v/%v/", s.Sport, s.League, value)
+	req, err := http.NewRequest("GET", apiEndpoint, nil)
 	if err != nil {
 		log.Fatal("Error in NewRequest!")
 	}
@@ -55,8 +57,11 @@ func (s *StattleshipAPI) APICall() (*StattleshipJSONData, error) {
 	defer resp.Body.Close()
 
 	body, err := ioutil.ReadAll(resp.Body)
-	data := new(StattleshipJSONData)
-	json.Unmarshal(body, &data)
+	var data *JSONData
+	e := json.Unmarshal(body, &data)
+	if e != nil {
+		log.Fatal(e)
+	}
 
 	return data, nil
 }

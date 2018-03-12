@@ -1,4 +1,4 @@
-package baseballSim
+package stattleship
 
 import "time"
 
@@ -8,7 +8,7 @@ type Player struct {
 	CreatedAt            time.Time `json:"created_at"`
 	UpdatedAt            time.Time `json:"updated_at"`
 	Active               bool      `json:"active"`
-	BirthDate            time.Time `json:"birth_date"`
+	BirthDate            string    `json:"birth_date"`
 	Captain              string    `json:"captain"`
 	City                 string    `json:"city"`
 	Country              string    `json:"country"`
@@ -38,7 +38,7 @@ type Player struct {
 	UniformNumber        int       `json:"uniform_number"`
 	UnitOfWeight         string    `json:"unit_of_weight"`
 	YearsOfExperience    int       `json:"years_of_experience"`
-	ProDebut             time.Time `json:"pro_debut"`
+	ProDebut             string    `json:"pro_debut"`
 	LeagueID             string    `json:"league_id"`
 	PlayingPositionID    string    `json:"playing_position_id"`
 	TeamID               string    `json:"team_id"`

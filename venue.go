@@ -1,4 +1,4 @@
-package baseballSim
+package stattleship
 
 import "time"
 

@@ -1,4 +1,4 @@
-package baseballSim
+package stattleship
 
 import (
 	"time"
@@ -11,8 +11,8 @@ type Season struct {
 	UpdatedAt           time.Time `json:"updated_at"`
 	Name                string    `json:"name"`
 	CurrentIntervalType string    `json:"current_interval_type"`
-	StartsOn            time.Time `json:"starts_on"`
-	EndsOn              time.Time `json:"ends_on"`
+	StartsOn            string    `json:"starts_on"`
+	EndsOn              string    `json:"ends_on"`
 	Slug                string    `json:"slug"`
 	LeagueID            string    `json:"league_id"`
 }

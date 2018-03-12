@@ -1,4 +1,4 @@
-package baseballSim
+package stattleship
 
 import (
 	"time"
@@ -31,7 +31,7 @@ type Game struct {
 	Period             int       `json:"period"`
 	PeriodLabel        string    `json:"period_label"`
 	Score              string    `json:"score"`
-	ScoreDifferential  string    `json:"score_differential"`
+	ScoreDifferential  int       `json:"score_differential"`
 	Scoreline          string    `json:"scoreline"`
 	Slug               string    `json:"slug"`
 	StartedAt          string    `json:"started_at"`

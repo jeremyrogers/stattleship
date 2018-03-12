@@ -1,4 +1,4 @@
-package baseballSim
+package stattleship
 
 import "time"
 
@@ -12,5 +12,5 @@ type Official struct {
 	Name          string    `json:"name"`
 	Role          string    `json:"role"`
 	RoleLabel     string    `json:"role_label"`
-	UniformNumber int       `json:"uniform_number"`
+	UniformNumber string    `json:"uniform_number"`
 }
