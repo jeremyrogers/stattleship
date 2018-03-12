@@ -1,3 +1,3 @@
-# Baseball Sim
+# Stattleship GO API Wrapper
 
-Not quite sure what I'm going to do here yet....
+Work in progress for an API wrapper in go to interface with the [Stattleship API](https://api.stattleship.com/).
